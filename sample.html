@@ -1,0 +1,65 @@
+<!--
+  this is a ActiveMQ websocket sample
+  author : weihuan
+-->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script src='js/stomp.js'></script>
+    <script src='js/chat.js'></script>
+    <script>
+    $(document).ready(function() {
+        //WebSocket supported detect
+        var supported = ("WebSocket" in window);
+        if (!supported) {
+            var msg = "Your browser does not support Web Sockets. This example will not work properly.<br>";
+            msg += "Please use a Web Browser with Web Sockets support (WebKit or Google Chrome).";
+            $("#debug").html(msg);
+        }
+
+        //start connect
+        var url = "ws://127.0.0.1:61614/stomp";
+        var login = "weihuan";
+        var passcode = "admin";
+        var destination = "/topic/Data";
+
+        client = Stomp.client(url);
+
+        // this allows to display debug logs directly on the web page
+        client.debug = function(str) {
+            //console.log(str + "\n");
+            //$("#debug").append(document.createTextNode(str + "\n"));
+        };
+        // the client is notified when it is connected to the server.
+        var onconnect = function(frame) {
+            client.subscribe(destination, function(message) {
+                parser = new DOMParser();
+                xmlDoc = parser.parseFromString(message.body, "text/xml");
+                var aaa = xmlDoc.getElementsByTagName("Value")[0].childNodes[0].nodeValue;
+                var bbb = xmlDoc.getElementsByTagName("Value")[1].childNodes[0].nodeValue;
+                var ccc = xmlDoc.getElementsByTagName("Param");
+
+                for (var i = 0; i < ccc.length; i++) {
+                    if (ccc[i].getAttribute("name") === "OilPress") {
+                        $("#messages").append(ccc[i].getElementsByTagName("Value")[0].childNodes[0].nodeValue + "<br>");
+                    }
+                };
+
+
+            });
+        };
+        client.connect(login, passcode, onconnect);
+    });
+    </script>
+</head>
+
+<body>
+    <div id='debug'>
+    </div>
+    <div id='messages'>
+    </div>
+</body>
+
+</html>

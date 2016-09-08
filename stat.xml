@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<message>
+    <id>636070384173079678</id>
+    <infos>
+        <leanid>DemoD01</leanid>
+        <target>
+            <type>DEVICESTATUS</type>
+            <leanid>vmc_deploy_deviceStatus</leanid>
+            <attributes />
+        </target>
+        <responses />
+        <attributes>
+            <attribute name="DEVICE_ID">All_Device</attribute>
+            <attribute name="COMMAND_NAME">DeviceStatusCommand</attribute>
+        </attributes>
+    </infos>
+    <record>
+        <params>
+            <param name="CTL_SCAN2()" type="Scalar">
+            <contents>
+                <content fetchtime="20160817134657120" elapsed_sec="0.0000000">
+                    <value fromType="STR" toType="STR">[["PA310_01","0","-1"],["HC_FANUC01","12","-1"],["HC_FANUC02","11","-1"],["HC_FANUC03","0","-1"],["HC_FANUC04","0","-1"],["HC_FANUC05","0","-1"],["HEIDENHAIN01","0","-1"]]</value>
+                </content>
+            </contents>
+            </param>
+            <param name="CTL_BXIF()" type="Scalar">
+            <contents>
+                <content fetchtime="20160817134657120" elapsed_sec="0.0000000">
+                    <value fromType="STR" toType="STR">[["#OS","Windows 7"],["#ServBox","v2.7 (Build 533.630)"]]</value>
+                    <value fromType="STR" toType="STR">[["CPU","31.33"],["RAM","6.04/8.00"],["ResultDrive","98.04/465.75"]]</value>
+                    <value fromType="STR" toType="STR">[["Data","0/7"]]</value>
+                    <value fromType="STR" toType="STR">[["*Alarm","RAM","Data"]]</value>
+                </content>
+            </contents>
+            </param>
+            <param name="G_MRCO(100,100)" type="Scalar">
+            <contents>
+                <content fetchtime="20160817134657307" elapsed_sec="0.0000000">
+                    <value fromType="STR" toType="STR">[["PA310_01","B"],["HC_FANUC01","1"],["HC_FANUC02","1"],["HC_FANUC03","B"],["HC_FANUC04","B"],["HC_FANUC05","B"],["HEIDENHAIN01","B"]]</value>
+                </content>
+            </contents>
+            </param>
+        </params>
+    </record>
+</message>
